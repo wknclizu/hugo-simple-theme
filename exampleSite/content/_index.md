@@ -1,5 +1,5 @@
 ---
-title: "ᕦʕ •ᴥ•ʔᕤ"
+# title: "ᕦʕ •ᴥ•ʔᕤ"
 ---
 
 Today's websites are bloated, slow, and full of scripts, ads, and trackers. This

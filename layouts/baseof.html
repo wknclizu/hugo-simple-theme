@@ -35,6 +35,10 @@
     {{ end }}
 
 
+    {{ if or .Params.math .Site.Params.math }}
+      {{ partial "math.html" . }}
+    {{ end }}
+
     <!-- A partial to be overwritten by the user.
   Simply place a custom_head.html into
   your local /layouts/partials-directory -->
@@ -42,7 +46,7 @@
   </head>
 
   <body>
-    <header>
+    <header{{ if not .Title }} class="no-title"{{ end }}>
       {{ partial "header.html" . }}
     </header>
     <main>
