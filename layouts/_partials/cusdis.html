@@ -1,0 +1,13 @@
+{{- if and (.Site.Params.cusdis.app_id) (not .Params.disableComments) -}}
+  <div id="cusdis_thread"
+    data-host="{{ .Site.Params.cusdis.host | default "https://cusdis.com" }}"
+    data-app-id="{{ .Site.Params.cusdis.app_id }}"
+    data-page-id="{{ .RelPermalink }}"
+    data-page-url="{{ .Permalink }}"
+    data-page-title="{{ .Title }}"
+    {{- with .Site.Params.cusdis.lang }}
+    data-lang="{{ . }}"
+    {{- end }}
+  ></div>
+  <script async defer src="{{ .Site.Params.cusdis.host | default "https://cusdis.com" }}/js/cusdis.es.js"></script>
+{{- end -}}
