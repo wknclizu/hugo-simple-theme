@@ -1,6 +1,6 @@
 # Basic config
 baseURL = "https://example.com"
-theme = "hugo-simple"
+theme = "hugo-simple-theme"
 defaultContentLanguage = "en"
 languageCode = "en"                # zh-Hans
 title = "Hugo Simple"
