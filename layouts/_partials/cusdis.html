@@ -10,4 +10,62 @@
     {{- end }}
   ></div>
   <script async defer src="{{ .Site.Params.cusdis.host | default "https://cusdis.com" }}/js/cusdis.es.js"></script>
+  
+  <style>
+  #cusdis_thread iframe {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  #cusdis_thread iframe::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  #cusdis_thread {
+    min-height: 200px;
+    width: 100%;
+  }
+  
+  #cusdis_thread iframe {
+    width: 100% !important;
+    border: none;
+    overflow: visible;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length > 0) {
+          const iframe = mutation.addedNodes[0];
+          if (iframe && iframe.tagName === 'IFRAME') {
+            iframe.onload = function() {
+              function adjustHeight() {
+                try {
+                  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                  const height = iframeDoc.body.scrollHeight;
+                  if (height > 0) {
+                    iframe.style.height = height + 'px';
+                  }
+                } catch (e) {
+                  console.log('cusdis iframe height adjustment failed');
+                }
+              }
+              
+              adjustHeight();
+              
+              setInterval(adjustHeight, 1000);
+            };
+          }
+        }
+      });
+    });
+    
+    const cusdisThread = document.getElementById('cusdis_thread');
+    if (cusdisThread) {
+      observer.observe(cusdisThread, { childList: true, subtree: true });
+    }
+  });
+  </script>
 {{- end -}}

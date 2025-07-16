@@ -50,7 +50,11 @@
         {{ end }}
       </div>
     {{ end }}
-    <!-- Include Cusdis comments for blog posts -->
-    {{ partial "cusdis.html" . }}
+    <!-- Include comments for blog posts: Twikoo takes priority over Cusdis -->
+    {{- if .Site.Params.twikoo.env_id -}}
+      {{ partial "twikoo.html" . }}
+    {{- else -}}
+      {{ partial "cusdis.html" . }}
+    {{- end -}}
   {{ end }}
 {{ end }}

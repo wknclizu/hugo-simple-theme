@@ -12,6 +12,7 @@ A [Hugo](https://gohugo.io/)-theme based on [Simple.css](https://simplecss.org/)
 - Dark mode 🌗
 - SEO friendly 🔍
 - Beautiful code highlighting 😻 (thanks [catppuccin/catppuccin](https://github.com/catppuccin/catppuccin))
+- Comment systems support (Twikoo & Cusdis) 💬
 
 ## Shortcodes
 
@@ -28,6 +29,20 @@ Note: Don't forget to star the [hugo-simple](https://github.com/maolonglong/hugo
 ## Customisation
 
 The theme provides partials for customising the `<head>`, `<body>` and `<footer>` of every page. Just copy and paste the partials from the theme to your local `layouts/partials/` folder.
+
+## Comments
+
+The theme supports two comment systems with automatic priority handling:
+
+- **[Twikoo](https://twikoo.js.org)** (Recommended) - Feature-rich with Markdown support
+- **[Cusdis](https://cusdis.com)** (Alternative) - Lightweight and privacy-friendly
+
+**Priority:** Twikoo has higher priority. If both are configured, only Twikoo will be used.
+
+See detailed configuration guides:
+- [Twikoo Configuration](TWIKOO.md)
+- [Cusdis Configuration](CUSDIS.md)
+- [Comment System Comparison](COMMENTS.md)
 
 ## Demo Site
 

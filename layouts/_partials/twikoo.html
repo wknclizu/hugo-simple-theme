@@ -1,0 +1,98 @@
+{{- if and (.Site.Params.twikoo.env_id) (not .Params.disableComments) -}}
+  <div id="tcomment" style="margin-top: 2rem;"></div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.min.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.css" />
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.nocss.js"></script>
+  
+  <script>
+    twikoo.init({
+      envId: '{{ .Site.Params.twikoo.env_id }}', // For Tencent Cloud: envId; For Vercel: deployment URL (https://xxx.vercel.app)
+      el: '#tcomment', // Container element
+      {{- if .Site.Params.twikoo.region }}
+      region: '{{ .Site.Params.twikoo.region }}', // Environment region, defaults to ap-shanghai, Tencent Cloud: ap-shanghai or ap-guangzhou; Vercel: not needed
+      {{- end }}
+      {{- if .Site.Params.twikoo.path }}
+      path: '{{ .Site.Params.twikoo.path }}', // Custom path to distinguish different articles, needed if your article path is not location.pathname
+      {{- else }}
+      path: location.pathname, // Custom path to distinguish different articles
+      {{- end }}
+      {{- if .Site.Params.twikoo.lang }}
+      lang: '{{ .Site.Params.twikoo.lang }}', // Manually set comment area language, supported languages: https://github.com/twikoojs/twikoo/blob/main/src/client/utils/i18n/index.js
+      {{- end }}
+    }).then(() => {
+      // Apply style fixes after Twikoo is fully loaded
+      const styleSheet = document.createElement('style');
+      styleSheet.textContent = `
+        .twikoo .tk-meta-input .el-input-group__prepend {
+          height: 40px !important;
+          line-height: 1 !important;
+          padding: 0 1.2rem !important;
+          min-width: 90px !important;
+          width: auto !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          box-sizing: border-box !important;
+          font-size: 14px !important;
+          font-weight: 400 !important;
+          white-space: nowrap !important;
+        }
+        
+        .twikoo .tk-meta-input .el-input__inner {
+          height: 40px !important;
+          line-height: 1 !important;
+          box-sizing: border-box !important;
+          font-size: inherit !important;
+          padding: 0 15px !important;
+        }
+        
+        .twikoo .tk-meta-input .el-input {
+          height: 40px !important;
+          display: flex !important;
+          align-items: stretch !important;
+        }
+        
+        .twikoo .tk-meta-input {
+          display: flex !important;
+          align-items: stretch !important;
+          margin-bottom: 0.5rem !important;
+        }
+        
+        /* Responsive design for mobile */
+        @media screen and (max-width: 767px) {
+          .twikoo .tk-meta-input .el-input-group__prepend {
+            min-width: 80px !important;
+            padding: 0 1rem !important;
+            font-size: 13px !important;
+          }
+        }
+      `;
+      document.head.appendChild(styleSheet);
+      
+      // Additional DOM manipulation if needed
+      setTimeout(() => {
+        const prepends = document.querySelectorAll('#tcomment .tk-meta-input .el-input-group__prepend');
+        const inputs = document.querySelectorAll('#tcomment .tk-meta-input .el-input__inner');
+        
+        prepends.forEach(el => {
+          el.style.height = '40px';
+          el.style.lineHeight = '40px';
+          el.style.display = 'flex';
+          el.style.alignItems = 'center';
+          el.style.justifyContent = 'center';
+          el.style.minWidth = '90px';
+          el.style.padding = '0 1.2rem';
+          el.style.fontWeight = '500';
+          el.style.whiteSpace = 'nowrap';
+        });
+        
+        inputs.forEach(el => {
+          el.style.height = '40px';
+          el.style.lineHeight = '40px';
+        });
+      }, 500);
+    }).catch((error) => {
+      console.error('Twikoo initialization failed:', error);
+    });
+  </script>
+{{- end -}}

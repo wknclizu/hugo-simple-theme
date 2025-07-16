@@ -2,6 +2,10 @@
 
 This Hugo Simple theme includes built-in support for [Cusdis](https://cusdis.com), a lightweight, privacy-friendly comment system.
 
+## Priority
+
+**Note: If both Twikoo and Cusdis are configured, the system will prioritize Twikoo. To use Cusdis, ensure that Twikoo's `env_id` parameter is not configured.**
+
 ## Setup
 
 1. **Sign up for Cusdis**: Visit [cusdis.com](https://cusdis.com) and create an account

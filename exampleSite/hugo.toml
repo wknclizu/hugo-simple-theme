@@ -43,10 +43,24 @@ hideMadeWithLine = false
 hideRSSLink = false
 math = true
 
-# Cusdis comment system configuration
+# Comment system configuration
+# NOTE: Twikoo has higher priority than Cusdis. If both are configured, only Twikoo will be used.
+
+# Twikoo comment system (has priority over Cusdis)
+[params.twikoo]
+# Your Vercel deployment URL (required for Twikoo comments to work)
+# env_id = ""
+# Language for comment system (optional, defaults to zh-CN)
+# lang = "en"  # or "zh-CN", "zh-TW", "ja", etc.
+# Region for Tencent Cloud (optional, not needed for Vercel deployment)
+# region = "ap-shanghai"
+# Custom path (optional, defaults to location.pathname)
+# path = ""
+
+# Cusdis comment system (fallback if Twikoo is not configured)
 [params.cusdis]
 # Your Cusdis app ID (required for comments to work)
-# app_id = "your-app-id-here"
+# app_id = ""
 # Cusdis host URL (optional, defaults to https://cusdis.com)
 # host = "https://cusdis.com"
 # Language for comment system (optional, e.g., "en", "zh-cn")
