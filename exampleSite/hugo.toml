@@ -43,6 +43,15 @@ hideMadeWithLine = false
 hideRSSLink = false
 math = true
 
+# Cusdis comment system configuration
+[params.cusdis]
+# Your Cusdis app ID (required for comments to work)
+# app_id = "your-app-id-here"
+# Cusdis host URL (optional, defaults to https://cusdis.com)
+# host = "https://cusdis.com"
+# Language for comment system (optional, e.g., "en", "zh-cn")
+# lang = "en"
+
 [params.author]
 name = "Shaolong Chen"
 email = "shaolong.chen@outlook.it"
