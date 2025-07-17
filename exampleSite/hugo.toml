@@ -49,9 +49,9 @@ math = true
 # Twikoo comment system (has priority over Cusdis)
 [params.twikoo]
 # Your Vercel deployment URL (required for Twikoo comments to work)
-# env_id = ""
+env_id = "https://twikoo-psi-fawn-87.vercel.app"
 # Language for comment system (optional, defaults to zh-CN)
-# lang = "en"  # or "zh-CN", "zh-TW", "ja", etc.
+lang = "en"  # or "zh-CN", "zh-TW", "ja", etc.
 # Region for Tencent Cloud (optional, not needed for Vercel deployment)
 # region = "ap-shanghai"
 # Custom path (optional, defaults to location.pathname)
