@@ -8,6 +8,7 @@
     twikoo.init({
       envId: '{{ .Site.Params.twikoo.env_id }}', // For Tencent Cloud: envId; For Vercel: deployment URL (https://xxx.vercel.app)
       el: '#tcomment', // Container element
+      placeholder: 'You\'ll get an email notification when someone replies to your comment. QQ email will use QQ avatar, otherwise Gravatar avatar will be used.', // Placeholder text for comment input
       {{- if .Site.Params.twikoo.region }}
       region: '{{ .Site.Params.twikoo.region }}', // Environment region, defaults to ap-shanghai, Tencent Cloud: ap-shanghai or ap-guangzhou; Vercel: not needed
       {{- end }}
@@ -58,11 +59,74 @@
           margin-bottom: 0.5rem !important;
         }
         
+        /* Placeholder text font options - Choose one of the following: */
+        
+        /* Option 1: System default (clean and readable) */
+        /*
+        .twikoo .el-textarea__inner::placeholder {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 400 !important;
+          color: #999 !important;
+          font-style: normal !important;
+        }
+        */
+        
+        /* Option 2: Serif font (elegant and traditional) - Uncomment to use */
+        /*
+        .twikoo .el-textarea__inner::placeholder {
+          font-family: Georgia, "Times New Roman", serif !important;
+          font-size: 14px !important;
+          font-weight: 400 !important;
+          color: #888 !important;
+          font-style: normal !important;
+        }
+        */
+        
+        /* Option 3: Monospace font (tech-style) - Uncomment to use */
+        
+        .twikoo .el-textarea__inner::placeholder {
+          font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace !important;
+          font-size: 13px !important;
+          font-weight: 400 !important;
+          color: #999 !important;
+          font-style: normal !important;
+        }
+        
+
+        
+        /* Option 4: Lighter sans-serif (modern and minimal) - Uncomment to use */
+        /*
+        .twikoo .el-textarea__inner::placeholder {
+          font-family: "Helvetica Neue", "Arial", sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 300 !important;
+          color: #aaa !important;
+          font-style: normal !important;
+        }
+        */
+        
+        /* Option 5: Google Fonts (stylish) - Uncomment to use */
+        /*
+        .twikoo .el-textarea__inner::placeholder {
+          font-family: "Inter", "Open Sans", sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 400 !important;
+          color: #777 !important;
+          font-style: normal !important;
+          letter-spacing: 0.2px !important;
+        }
+        */
+        
         /* Responsive design for mobile */
         @media screen and (max-width: 767px) {
           .twikoo .tk-meta-input .el-input-group__prepend {
             min-width: 80px !important;
             padding: 0 1rem !important;
+            font-size: 13px !important;
+          }
+          
+          .twikoo .el-textarea__inner::placeholder {
             font-size: 13px !important;
           }
         }
@@ -82,7 +146,7 @@
           el.style.justifyContent = 'center';
           el.style.minWidth = '90px';
           el.style.padding = '0 1.2rem';
-          el.style.fontWeight = '500';
+          el.style.fontWeight = '400';
           el.style.whiteSpace = 'nowrap';
         });
         
