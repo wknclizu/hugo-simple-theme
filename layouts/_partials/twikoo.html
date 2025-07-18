@@ -8,7 +8,7 @@
     twikoo.init({
       envId: '{{ .Site.Params.twikoo.env_id }}', // For Tencent Cloud: envId; For Vercel: deployment URL (https://xxx.vercel.app)
       el: '#tcomment', // Container element
-      placeholder: 'You\'ll get an email notification when someone replies to your comment. QQ email will use QQ avatar, otherwise Gravatar avatar will be used.', // Placeholder text for comment input
+      placeholder: 'You\'ll get an email notification when someone replies to your comment. The avatar is taken from Gravatar associated with your email.', // Placeholder text for comment input
       {{- if .Site.Params.twikoo.region }}
       region: '{{ .Site.Params.twikoo.region }}', // Environment region, defaults to ap-shanghai, Tencent Cloud: ap-shanghai or ap-guangzhou; Vercel: not needed
       {{- end }}
